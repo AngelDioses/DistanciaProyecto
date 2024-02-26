@@ -39,11 +39,20 @@
 #pragma config ICS = PGD1               // Comm Channel Select (Communicate on PGC1/EMUC1 and PGD1/EMUD1)
 #pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG is Disabled)
 
+#pragma config FOSC = INTOSCIO // Oscilador interno
+#pragma config WDTEN = OFF     // Perro guardián deshabilitado
+#pragma config FCMEN = OFF     // Monitor de fallas deshabilitado
+#pragma config MCLRE = ON      // Reset maestro habilitado
+
+
+
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
+
+#define BAUDRATE 9600        // Velocidad de transmisión en baudios
 
 #include <xc.h>
 #define    FCY    80000000UL // frecuencia del reloj
@@ -57,11 +66,11 @@
 #include <string.h>
 #include "libpic30.h"
 
-
-
 #include<uart.h>
 #include "pps.h"// incluye libreria de pines remapeables
 #include  <timer.h>
+#include <delay.h>
+
 
 
 // registro para configurar el puerto serial
@@ -223,4 +232,32 @@ habilita(); //AUTORIZA LAS INTERRPCIONES
  }
     return 0;
 }
+
+/*
+void Configurar_UART(){
+    //TRISFbits.TRISFS = 0; // Configura como pin Transmisor
+    
+    RPINR18 = 0x0000; // RP0: rp14 como U1RX
+    RPOR0 = 0x0300; // RP1 como U1TX
+    
+    //Baudrate is set to 19200 (@ 7.37 MHz)
+    U1BRG = BRGVAL;
+    //8 - bits, 1 bit strop, Flow ctrl mode
+    U1MODE = 0;
+    U1STA = 0;
+    
+    //Enable UART1
+    U1MODEbits.UARTEN = 1;
+    
+    //Enable Transmit
+    U1STAbits.UTXEN = 1;
+    
+    //Reset RX flag
+    IEFS0.U1RXIF = 0;
+    
+    //Enalbe RX interrupt
+    IEC0bits.U1RXIE = 1;
+}
+ */
+
 
