@@ -35,17 +35,17 @@ const int DireccionActivo = 1;
 boolean Activo = true;
 
 // Telegram configuracion
-const char* ssid = "ProyectoFisica";
-const char* password = "NEPTOR_bot0711";
-const String token = "6760974551:AAFkFz0xHJQoe_hfij1peG7IzokqDyLiEqg";
-int64_t IDchats[] = { 6742384195, 1477924319, 1327382118, 1213592950 };
+const char* ssid = "--------";
+const char* password = "--------";
+const String token = "--------";
+int64_t IDchats[] = { ----------- };
 int numIDchats = sizeof(IDchats) / sizeof(IDchats[0]);
 const String nombre = "NEPTOR_bot Activado.";
 
 // ThingSpeak configuracion
 char thingSpeakAddress[] = "api.thingspeak.com";
 unsigned long channelID = 2341025;
-const char* writeAPIKey = "18DGITXF2JLL7F62";
+const char* writeAPIKey = "--------";
 
 
 
